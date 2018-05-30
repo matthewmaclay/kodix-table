@@ -1,28 +1,76 @@
-.App {
+.App{
+  font-family: 'Roboto', sans-serif;
+  margin:0;
+  padding:0;
+  left:0;
+  top:0;
+  display:flex;
+  flex-direction: column;
+}
+.loading{
+  padding: 0;
+  margin: auto;
+  color:#F56433;
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.addCar{
+  height: 200px;
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.delBtn{
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border:2px solid #F56433;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
-
-.App-title {
-  font-size: 1.5em;
+.delBtn:hover{
+  background: #F56433;
+  color:black;
+  cursor:pointer;
 }
-
-.App-intro {
-  font-size: large;
+td>b{
+  color:#F56433;
 }
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+table {
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 5px;
+  background: #E1E3E0;
+  border-radius: 20px;
+  table-layout:fixed;
+  width:100%;
 }
+thead{
+ border-bottom: 2px solid #F56433;
+}
+th {
+  font-weight: 300;
+  padding: 12px 10px;
+  color: #F56433;
+}
+td {
+  padding: 10px;
+  color: #8D8173;
+}
+tr:hover{
+  box-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+@media screen and (max-width:720px) { 
+    thead{
+      display:none;
+    }
+    tr{
+      border-radius: 10px;
+      border:5px solid white;
+    }
+    tr,td{
+      display:block;
+      padding-left:40px;
+    }
+    table td:before {
+     content: attr(data-label);
+     position:absolute;
+     left:10px;
+     color: #F56433;
+    }
+   }
