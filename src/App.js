@@ -5,9 +5,13 @@ class App extends Component {
   constructor(props){
     super(props);
     this.deleteItem = this.deleteItem.bind(this);
+    this.addItem = this.addItem.bind(this);
+    this.closePopup = this.closePopup.bind(this);
+    this.showPopup = this.showPopup.bind(this);
     this.state={
       loading:true,
-      cars:[]
+      cars:[],
+      showPopup:false
     }
   }
   componentDidMount(){
@@ -37,8 +41,20 @@ class App extends Component {
     this.setState({
       cars:newArrCars
     });
-
-  }
+    }
+    closePopup(){
+      this.setState({
+        showPopup:false
+      });
+    }
+    addItem(){
+      this.closePopup();
+    }
+   showPopup(){
+      this.setState({
+        showPopup:true
+      })
+    }
   render() {
     let price = 0;
     const table = this.state.cars.map((item,num)=>{
@@ -60,7 +76,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="addCar">
-          
+          <svg onClick={ this.showPopup } xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
         </div>
         <div className="showCar">
           { ( this.state.loading ) ? 
@@ -96,7 +112,36 @@ class App extends Component {
             </table>
           }
         </div>
+        {   
+          (this.state.showPopup)?     
+          <div className="Popup">
+            <div className="Popup_header">
+              <p>Добавить</p>
+              <button onClick={ this.closePopup }>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#c8385a" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
+              </button>
+            </div>
+            <div className="Popup_content">
+              <div className="inputs">
+                <div><div>Название</div><input ref="title" placeholder="Матвейкин Сергей Михайлович" type="text" /></div>
+                <div><div>Описание</div><input ref="description" type="text" /></div>
+                <div><div>Год</div><input ref="year" type="text" /></div>
+                <div><div>Цвет</div><input ref="color" type="text" /></div>
+                <div><div>Статус</div><input ref="status" type="text" /></div>
+                <div><div>Цена</div><input ref="price" type="text" /></div>
+              </div>
+            </div>
+            <div className="Popup_footer">
+              <button onClick={ this.addItem }>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#9acd32" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+               </button>
+            </div>
+          </div>:
+          ""
+        }
+        <div className={ (this.state.showPopup)?"bgPopup":"" }></div>
       </div>
+
     );
   }
 }

@@ -6,6 +6,25 @@
   top:0;
   display:flex;
   flex-direction: column;
+  height: 100%;
+}
+body{
+  background: #edeef0;
+}
+.addCar{
+  text-align: center;
+}
+.addCar>svg{
+  fill:#F56433;
+  width: 10em;
+  box-shadow: 0 0 20px rgba(0,0,0,0.8);
+  border-radius: 100%;
+  cursor: pointer;
+  transition: fill 0.5s linear;
+}
+.addCar>svg:hover{
+  animation: shake 0.5s ease-in-out;
+  fill: #F59433;
 }
 .loading{
   padding: 0;
@@ -18,13 +37,15 @@
 }
 .delBtn{
   width: 100%;
+  padding: 2px;
   height: 100%;
   border-radius: 5px;
-  border:2px solid #F56433;
+  background: #F56433;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  color:black;
 }
 .delBtn:hover{
-  background: #F56433;
+  background: #F59433;
   color:black;
   cursor:pointer;
 }
@@ -55,7 +76,157 @@ td {
 tr:hover{
   box-shadow: 0 0 10px rgba(0,0,0,0.7);
 }
+
+
+/*Диалоговое окно было взаимствовано из моего другого проекта https://github.com/matthewmaclay/crm */
+.Popup {
+  position: absolute;
+  margin: auto;
+  z-index: 2;
+  width: 70vw;
+  height: 70vh;
+  background: #faae94;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.Popup_customers > input {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.Popup_customers > div {
+  height: 10vh;
+  overflow: auto;
+  scroll: auto;
+  background: white;
+  font-size: 1rem;
+}
+.Popup_customers > div ul {
+  padding: 10px;
+}
+.Popup_customers > div li {
+  list-style-type: none;
+}
+.Popup_customers > div li:hover {
+  background: #b93509;
+  color: white;
+  border-radius: 5px;
+}
+.Popup_header {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex: 0.5 1 5%;
+  background: #F56433;
+  display: flex;
+}
+.Popup_header > button {
+  background: #fff;
+  height: 100%;
+  width: 20%;
+  cursor: pointer;
+  border: none;
+}
+.Popup_header > button:hover {
+  background: #edeef0;
+}
+.Popup_header > button > svg {
+  fill: #c8385a;
+  transition: all 0.5s ease-in;
+}
+.Popup_header > button > svg:hover {
+  transform: scale(1.2);
+  fill: #792136;
+}
+.Popup_header > p {
+  font-size: 1.5rem;
+  text-align: center;
+  width: 80%;
+  margin: auto;
+}
+.Popup_content {
+  margin: 10px;
+  flex: 20 1 5%;
+  display: flex;
+}
+.Popup_content > .descrInputs {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.Popup_content > .descrInputs > div {
+  text-align: center;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #edeef0;
+}
+.Popup_content > .inputs {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.Popup_content > .inputs > div {
+  display: flex;
+  justify-content: space-around;
+  margin: 5px;
+}
+.Popup_content > .inputs > div > div {
+  flex: 1;
+}
+.Popup_content > .inputs > div > input {
+  flex: 2;
+  border: none;
+  border-radius: 5px;
+}
+.Popup_content > .inputs > div > select {
+  border: none;
+  border-radius: 5px;
+  width: auto;
+}
+.Popup_footer {
+  background: #F56433;
+  flex: 0.5 2 5%;
+  display: flex;
+  justify-content: flex-end;
+}
+.Popup_footer > button {
+  background: #fff;
+  height: 100%;
+  width: 20%;
+  cursor: pointer;
+  border: none;
+}
+.Popup_footer > button:hover {
+  background: #edeef0;
+}
+.Popup_footer > button > svg {
+  transition: all 0.5s ease-in;
+  fill: #9acd32;
+}
+.Popup_footer > button > svg:hover {
+  transform: scale(1.2);
+  fill: #5c7b1e;
+}
+
+.bgPopup {
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
 @media screen and (max-width:720px) { 
+    body{
+      font-size: 1.2rem;
+    }
     thead{
       display:none;
     }
@@ -65,7 +236,7 @@ tr:hover{
     }
     tr,td{
       display:block;
-      padding-left:40px;
+      padding-left:50px;
     }
     table td:before {
      content: attr(data-label);
@@ -73,4 +244,14 @@ tr:hover{
      left:10px;
      color: #F56433;
     }
+    .Popup{
+      width: 90vw;
+      height: 80vh;
+    }
    }
+@keyframes shake {
+ 0 {  }
+ 33% { transform: rotate(-10deg); }
+ 66% { transform: rotate(10deg);  }
+ 99% {   }
+}
