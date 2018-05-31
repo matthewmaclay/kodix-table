@@ -230,13 +230,13 @@ tr:hover{
 }
 .bgPopup>img{
   width: 30vw;
-  position:fixed;
+  position:absolute;
   left:0;
   top:0;
   right:0;
   bottom:0;
   margin:auto;
-  animation: iam 10s ease-in-out;
+  -webkit-animation: iam 10s ease-in-out;
 
 }
 

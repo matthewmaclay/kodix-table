@@ -36,6 +36,7 @@ class App extends Component {
     const newArrCars = [];
     console.log(cars);
     cars.forEach((item, i, arr)=>{
+      // eslint-disable-next-line
       if(item.id != idDeleteItem){
         newArrCars.push(item);
       }
@@ -144,10 +145,10 @@ class App extends Component {
               <div className="inputs">
                 <div><div>Название</div><input ref="title" placeholder="Матвейкин Сергей Михайлович" type="text" /></div>
                 <div><div>Описание</div><input ref="description" type="text" /></div>
-                <div><div>Год</div><input ref="year" type="text" /></div>
+                <div><div>Год</div><input ref="year" type="number" /></div>
                 <div><div>Цвет</div><input ref="color" type="text" /></div>
                 <div><div>Статус</div><input ref="status" type="text" /></div>
-                <div><div>Цена</div><input ref="price" type="text" /></div>
+                <div><div>Цена</div><input ref="price" type="number" /></div>
               </div>
             </div>
             <div className="Popup_footer">
