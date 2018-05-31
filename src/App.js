@@ -18,9 +18,11 @@ class App extends Component {
     const request = new XMLHttpRequest();
     request.onreadystatechange = () =>{
       if( request.readyState === 4 && request.status === 200 ){
+        const cars = JSON.parse(request.responseText);
         this.setState({
           loading:false,
-          cars:JSON.parse(request.responseText)
+          cars:cars,
+          maxId:cars[cars.length-1].id
         });
       }
     }
@@ -48,7 +50,24 @@ class App extends Component {
       });
     }
     addItem(){
-      this.closePopup();
+      if( this.refs.title.value && this.refs.description.value && this.refs.year.value && this.refs.color.value && this.refs.status.value && this.refs.price.value ){
+        const newItem ={
+          id:this.state.maxId+1,
+          title:this.refs.title.value,
+          description:this.refs.description.value,
+          year:this.refs.year.value,
+          color:this.refs.color.value,
+          status:this.refs.status.value,
+          price:this.refs.price.value,
+        }
+        this.setState((prevState, props) => ({
+          cars: [...prevState.cars,newItem],
+          maxId:prevState.maxId+1
+        }));
+        this.closePopup();
+      }else{
+        alert('Необходимо заполнить все поля');
+      }
     }
    showPopup(){
       this.setState({
@@ -139,7 +158,7 @@ class App extends Component {
           </div>:
           ""
         }
-        <div className={ (this.state.showPopup)?"bgPopup":"" }></div>
+        { (this.state.showPopup)?<div className="bgPopup"><img src="iam.png" alt="iam" /></div>:"" }
       </div>
 
     );

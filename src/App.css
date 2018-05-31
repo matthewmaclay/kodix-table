@@ -1,3 +1,6 @@
+#root{
+  height: 100%;
+}
 .App{
   font-family: 'Roboto', sans-serif;
   margin:0;
@@ -17,7 +20,6 @@ body{
 .addCar>svg{
   fill:#F56433;
   width: 10em;
-  box-shadow: 0 0 20px rgba(0,0,0,0.8);
   border-radius: 100%;
   cursor: pointer;
   transition: fill 0.5s linear;
@@ -78,7 +80,7 @@ tr:hover{
 }
 
 
-/*Диалоговое окно было взаимствовано из моего другого проекта https://github.com/matthewmaclay/crm */
+/*Тут внезапно появляется пародия на БЭМ не потому что я украл их где-то в интернете, это стили диалоговых окон из моего другого проекта(github.com/matthewmaclay/crm), написаные на SASS и скомпиленные сюда */
 .Popup {
   position: absolute;
   margin: auto;
@@ -216,11 +218,26 @@ tr:hover{
 .bgPopup {
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
-  position: absolute;
-  margin: 0;
+  position: fixed;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top:0;
+  bottom: 0;
   padding: 0;
   width: 100%;
   min-height: 100vh;
+}
+.bgPopup>img{
+  width: 30vw;
+  position:fixed;
+  left:0;
+  top:0;
+  right:0;
+  bottom:0;
+  margin:auto;
+  animation: iam 10s ease-in-out;
+
 }
 
 @media screen and (max-width:720px) { 
@@ -250,8 +267,14 @@ tr:hover{
     }
    }
 @keyframes shake {
- 0 {  }
+ 0% {  }
  33% { transform: rotate(-10deg); }
  66% { transform: rotate(10deg);  }
  99% {   }
+}
+
+@keyframes iam {
+ 0% { bottom:0; }
+ 30% { bottom:0; }
+ 100% {  bottom:80%; }
 }
