@@ -59,7 +59,7 @@ class App extends Component {
           year:this.refs.year.value,
           color:this.refs.color.value,
           status:this.refs.status.value,
-          price:this.refs.price.value,
+          price:Number(this.refs.price.value)
         }
         this.setState((prevState, props) => ({
           cars: [...prevState.cars,newItem],
