@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import './App.css'
+import Header from './components/header.js';
+import Table from './components/table.js';
+import Panel from './components/panel.js';
+import Footerasdas from './components/footer.js';
 
+import './App.css'
 class App extends Component {
   constructor(props){
     super(props);
@@ -94,10 +98,9 @@ class App extends Component {
      let priceWithTax = price*1.13 ;
      priceWithTax = priceWithTax.toFixed(2);
     return (
-      <div className="App">
-        <div className="addCar">
-          <svg onClick={ this.showPopup } xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
-        </div>
+      <div>
+      <Header />
+      <Panel />
         <div className="showCar">
           { ( this.state.loading ) ? 
             <div className="loading">
