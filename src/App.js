@@ -92,7 +92,7 @@ class App extends Component {
         </tr>
     )});
      let priceWithTax = price*1.13 ;
-     priceWithTax = priceWithTax.toFixed(0);
+     priceWithTax = priceWithTax.toFixed(2);
     return (
       <div className="App">
         <div className="addCar">
