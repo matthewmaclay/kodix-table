@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 const Footer = (props)=>{
 	return(
-	<div className="header">
-		<img src="jpg/logo.jpg" alt="logo" />
+	<div className="footer">
+		<p>Матвейкин Сергей</p>
 	</div>
 	)
 }

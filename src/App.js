@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/header.js';
-import Table from './components/table.js';
 import Panel from './components/panel.js';
-import Footerasdas from './components/footer.js';
+import Footer from './components/footer.js';
 
 import './App.css'
 class App extends Component {
@@ -54,25 +53,12 @@ class App extends Component {
         showPopup:false
       });
     }
-    addItem(){
-      if( this.refs.title.value && this.refs.description.value && this.refs.year.value && this.refs.color.value && this.refs.status.value && this.refs.price.value ){
-        const newItem ={
-          id:this.state.maxId+1,
-          title:this.refs.title.value,
-          description:this.refs.description.value,
-          year:this.refs.year.value,
-          color:this.refs.color.value,
-          status:this.refs.status.value,
-          price:Number(this.refs.price.value)
-        }
+    addItem(item){
+      const newItem = {...item,id:this.state.maxId+1};
         this.setState((prevState, props) => ({
           cars: [...prevState.cars,newItem],
           maxId:prevState.maxId+1
         }));
-        this.closePopup();
-      }else{
-        alert('Необходимо заполнить все поля');
-      }
     }
    showPopup(){
       this.setState({
@@ -84,15 +70,13 @@ class App extends Component {
     const table = this.state.cars.map((item,num)=>{
       price += item.price;
       return(
-        <tr key={ item.id }>
-          <td data-label="ID">{ item.id }</td>
-          <td data-label="Название">{ item.title }</td>
-          <td data-label="Описание">{ item.description }</td>
-          <td data-label="Год">{ item.year }</td>
-          <td data-label="Цвет">{ item.color }</td>
-          <td data-label="Статус">{ item.status }</td>
-          <td data-label="Цена">{ item.price }</td>
-          <td><div id={ item.id } className="delBtn" onClick={ this.deleteItem }>Удалить</div></td>
+        <tr className="car" key={ item.id }>
+          <td colspan="2" className="car__title"><b>{ item.title }</b><p className="car__description">{ item.description }</p></td>
+          <td className="car__year">{ item.year }</td>
+          <td className="car__color"><div style={{ backgroundColor:item.color }}></div></td>
+          <td className="car__status">{ (item.status === "in_stock")? "В наличии" :(item.status === "out_of_stock")?"Нет в наличии":"Ожидается" }</td>
+          <td className="car__price">{ item.price+" руб." }</td>
+          <td><button id={ item.id } className="car__delBtn" onClick={ this.deleteItem }>Удалить</button></td>
         </tr>
     )});
      let priceWithTax = price*1.13 ;
@@ -100,8 +84,8 @@ class App extends Component {
     return (
       <div>
       <Header />
-      <Panel />
-        <div className="showCar">
+      <Panel addItem={ this.addItem } />
+        <div className="showCars">
           { ( this.state.loading ) ? 
             <div className="loading">
             <p><b>Загрузка</b></p>
@@ -110,59 +94,31 @@ class App extends Component {
             <table>
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Название</th>
-                  <th>Описание</th>
+                  <th colspan="2" >Название</th>
                   <th>Год</th>
                   <th>Цвет</th>
                   <th>Статус</th>
                   <th>Цена</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
                 { table }
-                <tr>
-                  <td colSpan="5"></td>
+                <tr className="all">
+                  <td className="empty"colSpan="4"></td>
                   <td><b>Итого</b></td>
-                  <td>{ price }</td>
+                  <td>{ price+" руб." }</td>
                 </tr>
-                <tr>
-                  <td colSpan="5"></td>
+                <tr className="all">
+                  <td className="empty"colSpan="4"></td>
                   <td><b>С налогом</b></td>
-                  <td>{ priceWithTax }</td>
+                  <td>{ priceWithTax+" руб." }</td>
                 </tr>
               </tbody>
             </table>
           }
         </div>
-        {   
-          (this.state.showPopup)?     
-          <div className="Popup">
-            <div className="Popup_header">
-              <p>Добавить</p>
-              <button onClick={ this.closePopup }>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="#c8385a" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
-              </button>
-            </div>
-            <div className="Popup_content">
-              <div className="inputs">
-                <div><div>Название</div><input ref="title" placeholder="Матвейкин Сергей Михайлович" type="text" /></div>
-                <div><div>Описание</div><input ref="description" type="text" /></div>
-                <div><div>Год</div><input ref="year" type="number" /></div>
-                <div><div>Цвет</div><input ref="color" type="text" /></div>
-                <div><div>Статус</div><input ref="status" type="text" /></div>
-                <div><div>Цена</div><input ref="price" type="number" /></div>
-              </div>
-            </div>
-            <div className="Popup_footer">
-              <button onClick={ this.addItem }>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="#9acd32" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
-               </button>
-            </div>
-          </div>:
-          ""
-        }
-        { (this.state.showPopup)?<div className="bgPopup"><img src="iam.png" alt="iam" /></div>:"" }
+        <Footer />
       </div>
 
     );
