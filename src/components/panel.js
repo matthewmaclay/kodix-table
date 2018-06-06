@@ -80,10 +80,11 @@ class Panel extends Component {
           </div>
   				<input onBlur={ this.checkEmpty } className="panel__description" ref="description" type="text" placeholder="Описание" />
   			</div>
-  			<div>
+  			<div className="container">
   				<div className="panel__colors">
             <div id="White" className={ (this.state.color === "White")?"choicenColor":"" }></div>
             <div id="Black" className={ (this.state.color === "Black")?"choicenColor":"" }></div>
+            <div id="Silver" className={ (this.state.color === "Silver")?"choicenColor":"" }></div>
             <div id="Red" className={ (this.state.color === "Red")?"choicenColor":"" }></div>
             <div id="Green" className={ (this.state.color === "Green")?"choicenColor":"" }></div>
           </div>
@@ -94,7 +95,7 @@ class Panel extends Component {
   						<option value="out_of_stock">Нет в наличии</option>
   					</select>
 				</div>
-				<div className="panel__send" onClick={ this.newItem }><p>Отправить</p></div>
+				<div className="panel__send" onClick={ this.newItem }><p>ОТПРАВИТЬ</p></div>
   			</div>
   		</div>
   		);

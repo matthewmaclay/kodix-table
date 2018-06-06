@@ -84,7 +84,9 @@ class App extends Component {
     return (
       <div>
       <Header />
+      <div className="caramba"><p>¡Ay caramba!</p></div>
       <Panel addItem={ this.addItem } />
+      <div className="auto"><p>АВТОМОБИЛИ В НАЛИЧИИ</p></div>
         <div className="showCars">
           { ( this.state.loading ) ? 
             <div className="loading">
