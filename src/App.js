@@ -71,12 +71,12 @@ class App extends Component {
       price += item.price;
       return(
         <tr className="car" key={ item.id }>
-          <td colspan="2" className="car__title"><b>{ item.title }</b><p className="car__description">{ item.description }</p></td>
+          <td colspan="5" className="car__title">{ item.title }<p className="car__description">{ item.description }</p></td>
           <td className="car__year">{ item.year }</td>
           <td className="car__color"><div style={{ backgroundColor:item.color }}></div></td>
-          <td className="car__status">{ (item.status === "in_stock")? "В наличии" :(item.status === "out_of_stock")?"Нет в наличии":"Ожидается" }</td>
-          <td className="car__price">{ item.price+" руб." }</td>
-          <td><button id={ item.id } className="car__delBtn" onClick={ this.deleteItem }>Удалить</button></td>
+          <td colspan="2" className="car__status">{ (item.status === "in_stock")? "В наличии" :(item.status === "out_of_stock")?"Нет в наличии":"Ожидается" }</td>
+          <td colspan="2" className="car__price">{ item.price+" руб." }</td>
+          <td colspan="2" ><button id={ item.id } className="car__delBtn" onClick={ this.deleteItem }>Удалить</button></td>
         </tr>
     )});
      let priceWithTax = price*1.13 ;
@@ -96,25 +96,25 @@ class App extends Component {
             <table>
               <thead>
                 <tr>
-                  <th colspan="2" >Название</th>
+                  <th colspan="5" >Название</th>
                   <th>Год</th>
                   <th>Цвет</th>
-                  <th>Статус</th>
-                  <th>Цена</th>
-                  <th></th>
+                  <th colspan="2">Статус</th>
+                  <th colspan="2">Цена</th>
+                  <th colspan="2"></th>
                 </tr>
               </thead>
               <tbody>
                 { table }
                 <tr className="all">
-                  <td className="empty"colSpan="4"></td>
-                  <td><b>Итого</b></td>
-                  <td>{ price+" руб." }</td>
+                  <td className="empty"colSpan="7"></td>
+                  <td colspan="2"><b>Итого</b></td>
+                  <td colspan="3">{ price+" руб." }</td>
                 </tr>
                 <tr className="all">
-                  <td className="empty"colSpan="4"></td>
-                  <td><b>С налогом</b></td>
-                  <td>{ priceWithTax+" руб." }</td>
+                  <td className="empty"colSpan="7"></td>
+                  <td colspan="2"><b>С налогом</b></td>
+                  <td colspan="3">{ priceWithTax+" руб." }</td>
                 </tr>
               </tbody>
             </table>

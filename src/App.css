@@ -1,5 +1,6 @@
 #root{
   height: 100%;
+  background: #f5f7f6;
 }
 .App{
   font-family: 'Roboto', sans-serif;
@@ -10,9 +11,10 @@
   display:flex;
   flex-direction: column;
   height: 100%;
+
 }
 body{
-  background: #edeef0;
+  background: #f5f7f6;
 }
 .loading{
   padding: 0;
@@ -33,15 +35,16 @@ tr{
   background:white;
 }
 .auto p{
-  border-left:2px solid silver; 
+  border-left:5px solid silver; 
   margin:0;
   padding-left: 15px;
   font-size:19px;
   margin-top:-4px;
+  font-weight: bold;
 }
 .car__description{
   font-size:0.8rem;
-  color:#666;
+  color:#b2b6b5;
   padding:0;
   margin:0;
 }
@@ -69,22 +72,34 @@ tr{
   color:#c40a31;
 }
 table {
+  margin-top:15px;
+  font-size:0.9rem;
   text-align: center;
   border-collapse: collapse;
   border-spacing: 5px;
-  background: #ddd;
+  background: #f5f7f6;
   border-radius: 10px;
   table-layout:fixed;
   width:100%;
-  color:#222;
+  color:#6b6b6b;
 }
 thead{
   background:#c40a31;
   color:white;
   border-radius:10px;
 }
+th:first-child{
+  height:45px;
+  text-align: left;
+  padding-left:15px;
+}
 th{
-  height:3rem;
+    text-align: left;
+}
+td{
+  text-align: left;
+  padding-top:15px;
+
 }
 .showCars{
   padding:10px;
@@ -110,8 +125,7 @@ th{
   justify-content:center;
 }
 .header>img{
-  width:100px;
-  max-width:400px;
+  max-width:975px;
 }
 .panel{
   display:flex;
@@ -230,6 +244,8 @@ th{
 }
 .choicenColor{
   border:3px solid #c40a31 !important;
+    margin-right:5px;
+    margin-left:-4px;
 }
 .panel__colors div{
 
@@ -240,9 +256,19 @@ th{
   border-radius:100%;
 }
 .panel__colors div:hover{
-  border:2px solid blue; 
+  border:2px solid blue;
+    margin-right:5px;
+}
+.car__title{
+  padding: 15px;
+}
+.car__color{
+  display:flex;
 }
 @media screen and (max-width:720px) { 
+  .auto{
+    display:none;
+  }
     thead{
       display:none;
     }
@@ -266,6 +292,7 @@ th{
       text-align:left;
       flex:1 1 60%;
       order:1;
+      padding: 15px;
     }
     .car__description{
       margin-top:10px;
