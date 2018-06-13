@@ -82,43 +82,45 @@ class App extends Component {
      let priceWithTax = price*1.13 ;
      priceWithTax = priceWithTax.toFixed(2);
     return (
+    <div className="contain1" >
       <div>
-      <Header />
-      <div className="caramba"><p>¡Ay caramba!</p></div>
-      <Panel addItem={ this.addItem } />
-      <div className="auto"><p>АВТОМОБИЛИ В НАЛИЧИИ</p></div>
-        <div className="showCars">
-          { ( this.state.loading ) ? 
-            <div className="loading">
-            <p><b>Загрузка</b></p>
-            <img src="loading.gif" alt="loading"></img>
-            </div>:
-            <table>
-              <thead>
-                <tr>
-                  <th colspan="5" >Название</th>
-                  <th>Год</th>
-                  <th>Цвет</th>
-                  <th colspan="2">Статус</th>
-                  <th colspan="2">Цена</th>
-                  <th colspan="2"></th>
-                </tr>
-              </thead>
-              <tbody>
-                { table }
-                <tr className="all">
-                  <td className="empty"colSpan="7"></td>
-                  <td colspan="2"><b>Итого</b></td>
-                  <td colspan="3">{ price+" руб." }</td>
-                </tr>
-                <tr className="all">
-                  <td className="empty"colSpan="7"></td>
-                  <td colspan="2"><b>С налогом</b></td>
-                  <td colspan="3">{ priceWithTax+" руб." }</td>
-                </tr>
-              </tbody>
-            </table>
-          }
+        <Header />
+        <div className="caramba"><p>¡Ay caramba!</p></div>
+        <Panel addItem={ this.addItem } />
+        <div className="auto"><p>АВТОМОБИЛИ В НАЛИЧИИ</p></div>
+          <div className="showCars">
+            { ( this.state.loading ) ? 
+              <div className="loading">
+              <p><b>Загрузка</b></p>
+              <img src="loading.gif" alt="loading"></img>
+              </div>:
+              <table>
+                <thead>
+                  <tr>
+                    <th colspan="5" >Название</th>
+                    <th>Год</th>
+                    <th>Цвет</th>
+                    <th colspan="2">Статус</th>
+                    <th colspan="2">Цена</th>
+                    <th colspan="2"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  { table }
+                  <tr className="all">
+                    <td className="empty"colSpan="7"></td>
+                    <td colspan="2"><b>Итого</b></td>
+                    <td colspan="3">{ price+" руб." }</td>
+                  </tr>
+                  <tr className="all">
+                    <td className="empty"colSpan="7"></td>
+                    <td colspan="2"><b>С налогом</b></td>
+                    <td colspan="3">{ priceWithTax+" руб." }</td>
+                  </tr>
+                </tbody>
+              </table>
+            }
+          </div>
         </div>
         <Footer />
       </div>
