@@ -64,9 +64,11 @@ tr{
   color:black;
 }
 .car__delBtn:hover{
-  background: #000;
+  background: #282d31;
   color:#fff;
   cursor:pointer;
+  padding: 5px 10px 5px 10px;
+  border-radius:50px;
 }
 .all b{
   color:#c40a31;
@@ -273,10 +275,10 @@ td{
       display:none;
     }
     tr{
-      border-radius: 10px;
       display:flex;
       flex-wrap:wrap;
       padding:10px;
+      border-top:1px solid silver;
     }
     td{
       margin:10px 0 10px 0;
@@ -296,6 +298,13 @@ td{
     }
     .car__description{
       margin-top:10px;
+    }
+      .car__delBtn{
+      background: #282d31;
+      color:#fff;
+      cursor:pointer;
+      padding: 5px 10px 5px 10px;
+      border-radius:50px;
     }
     .car__year{
       text-align:left;
